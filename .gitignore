@@ -1,0 +1,36 @@
+# Spring Boot / STS specific
+target/
+bin/
+.settings/
+.project
+.classpath
+.springBeans
+
+# IDE specific
+.vscode/
+.idea/
+*.iml
+
+# Logs
+logs/
+
+# Gradle specific
+.gradle/
+build/
+out/
+
+# Maven specific
+.mvn/
+mvnw
+mvnw.cmd
+
+# Temporary files
+*.tmp
+*.log
+*.log.*
+
+# Mac OS specific
+.DS_Store
+
+# Eclipse-specific
+.recommenders/
