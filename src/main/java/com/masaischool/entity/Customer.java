@@ -36,9 +36,8 @@ public class Customer {
     @Column(name = "date_of_birth", nullable = false)
     private LocalDate dateOfBirth;
     
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private Gender gender;
+    @Column(nullable = false, length = 10)
+    private String gender;
     
     @Column(nullable = false)
     private String email;
@@ -58,8 +57,9 @@ public class Customer {
 	}
 
 
-	public Customer(String full_Name, String username, String password, LocalDate dateOfBirth, Gender gender,
-			String email, List<Appointment> appointments, int isDeleted) {
+	public Customer(String full_Name, String username, String password, LocalDate dateOfBirth, String gender,
+			String email, List<Appointment> appointments) {
+  
 		super();
 		this.fullName = full_Name;
 		this.username = username;
@@ -68,7 +68,6 @@ public class Customer {
 		this.gender = gender;
 		this.email = email;
 		this.appointments = appointments;
-		this.isDeleted = isDeleted;
 	}
 
 	// Getters, setters, and other methods
@@ -128,12 +127,12 @@ public class Customer {
 	}
 
 
-	public Gender getGender() {
+	public String getGender() {
 		return gender;
 	}
 
 
-	public void setGender(Gender gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 

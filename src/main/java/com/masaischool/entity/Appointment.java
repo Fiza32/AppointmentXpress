@@ -34,11 +34,11 @@ public class Appointment {
     private LocalTime appointmentTime;
 
     @ManyToOne
-    @JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
+    @JoinColumn(name = "customer_id")
     private Customer customer;
 
     @ManyToOne
-    @JoinColumn(name = "provider_id", referencedColumnName = "provider_id")
+    @JoinColumn(name = "provider_id")
     private ServiceProvider serviceProvider;
 
 	public Appointment() {

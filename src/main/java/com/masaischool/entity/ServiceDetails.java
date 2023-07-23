@@ -34,7 +34,9 @@ public class ServiceDetails {
     // Other service details attributes
 
     @ManyToOne
-    @JoinColumn(name = "provider_id", referencedColumnName = "provider_id")
+
+    @JoinColumn(name = "provider_id")
+
     private ServiceProvider serviceProvider;
 
 	public ServiceDetails() {

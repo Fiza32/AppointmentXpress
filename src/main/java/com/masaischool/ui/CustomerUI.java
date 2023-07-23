@@ -3,6 +3,11 @@ package com.masaischool.ui;
 import java.time.LocalDate;
 import java.util.Scanner;
 
+import com.masaischool.entity.Customer;
+import com.masaischool.exception.SomeThingWentWrongException;
+import com.masaischool.service.CustomerService;
+import com.masaischool.service.CustomerServiceImpl;
+
 
 public class CustomerUI {
 
@@ -115,70 +120,46 @@ public class CustomerUI {
     
     static void customerRegistration(Scanner sc) {
         System.out.println("=== Customer Registration ===");
-
+        
+        sc.nextLine();
         System.out.print("Enter full name: ");
         String fullName = sc.nextLine();
 
+//        sc.nextLine();
         System.out.print("Enter date of birth (yyyy-MM-dd): ");
-        LocalDate dateOfBirth = LocalDate.parse(sc.next());
+        LocalDate dateOfBirth = LocalDate.parse(sc.nextLine());
 
-        System.out.print("Enter gender: ");
-        String gender = sc.next();
+        // Taking input for gender
+        System.out.print("Enter gender (MALE/FEMALE/OTHER): ");
+        String gender = sc.nextLine().toUpperCase();
 
         System.out.print("Enter email address: ");
-        String emailAddress = sc.next();
+        String emailAddress = sc.nextLine();
 
-        System.out.print("Enter phone number: ");
-        String phoneNumber = sc.next();
 
         System.out.print("Enter username: ");
-        String username = sc.next();
+        String username = sc.nextLine();
 
         System.out.print("Enter password: ");
-        String password = sc.next();
-
-        System.out.print("Enter street address: ");
-        sc.nextLine(); // Consume the newline character
-        String streetAddress = sc.nextLine();
-
-        System.out.print("Enter city: ");
-        String city = sc.next();
-
-        System.out.print("Enter state/province: ");
-        String stateProvince = sc.next();
-
-        System.out.print("Enter postal/ZIP code: ");
-        String postalCode = sc.next();
-
-        System.out.print("Do you have any medical condition? [y/n]: ");
-        boolean hasMedicalCondition = sc.next().equalsIgnoreCase("y");
-
-        System.out.print("Preferred language: ");
-        String preferredLanguage = sc.next();
-
-        System.out.print("Do you want to receive marketing materials? [y/n]: ");
-        boolean receiveMarketingMaterials = sc.next().equalsIgnoreCase("y");
-
-        // You can store the collected information in your database or data model
-        // For demonstration purposes, we will simply print the input values
-        System.out.println("Customer Registration Successful!");
-        System.out.println("Full Name: " + fullName);
-        System.out.println("Date of Birth: " + dateOfBirth);
-        System.out.println("Gender: " + gender);
-        System.out.println("Email Address: " + emailAddress);
-        System.out.println("Phone Number: " + phoneNumber);
-        System.out.println("Username: " + username);
-        System.out.println("Password: " + password);
-        System.out.println("Street Address: " + streetAddress);
-        System.out.println("City: " + city);
-        System.out.println("State/Province: " + stateProvince);
-        System.out.println("Postal/ZIP Code: " + postalCode);
-        System.out.println("Medical Condition: " + (hasMedicalCondition ? "Yes" : "No"));
-        System.out.println("Preferred Language: " + preferredLanguage);
-        System.out.println("Receive Marketing Materials: " + (receiveMarketingMaterials ? "Yes" : "No"));
+        String password = sc.nextLine();
         
-        // Call the method to create a new customer account in your system using the collected information
-        // createNewCustomerAccount(fullName, dateOfBirth, gender, emailAddress, phoneNumber, username, password, streetAddress, city, stateProvince, postalCode, hasMedicalCondition, preferredLanguage, receiveMarketingMaterials);
+        // Create an object of Service class
+        CustomerService cSr = new CustomerServiceImpl();
+        
+        try {
+        	Customer customer = new Customer(fullName, username, password, dateOfBirth, gender, emailAddress, null);
+        	cSr.addCustomer(customer);
+        	
+        	System.out.println("------------------------------------");
+        	System.out.println("Customer details added successfully");
+        	System.out.println("------------------------------------");
+        }catch(SomeThingWentWrongException se) {
+        	System.out.println(se.getMessage());
+        }
+        
+//        System.out.print("Preferred language: ");
+//        String preferredLanguage = sc.next();
+
     }
 
     static void customerLogin(Scanner sc) {
@@ -187,12 +168,6 @@ public class CustomerUI {
 		String username = sc.next();
 		System.out.print("Enter password ");
 		String password = sc.next();
-//		try {
-//			CustomerService customerService = new CustomerServiceImpl();
-//			customerService.login(username, password);
 		customerMenu(sc);
-//		}catch(NoRecordFoundException | SomeThingWentWrongException ex) {
-//			System.out.println(ex.getMessage());
-//		}
 	}
 }

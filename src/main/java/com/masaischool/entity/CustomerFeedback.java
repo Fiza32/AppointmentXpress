@@ -32,7 +32,8 @@ public class CustomerFeedback {
 	
 
     @ManyToOne
-    @JoinColumn(name = "customer_id", referencedColumnName = "appointment_id")
+    @JoinColumn(name = "customer_id")
+  
     private Customer customer;
 
     @ManyToOne
