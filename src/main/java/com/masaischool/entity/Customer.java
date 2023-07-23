@@ -59,6 +59,7 @@ public class Customer {
 
 	public Customer(String full_Name, String username, String password, LocalDate dateOfBirth, String gender,
 			String email, List<Appointment> appointments) {
+  
 		super();
 		this.fullName = full_Name;
 		this.username = username;

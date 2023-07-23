@@ -159,6 +159,7 @@ public class CustomerUI {
         
 //        System.out.print("Preferred language: ");
 //        String preferredLanguage = sc.next();
+
     }
 
     static void customerLogin(Scanner sc) {
@@ -167,12 +168,6 @@ public class CustomerUI {
 		String username = sc.next();
 		System.out.print("Enter password ");
 		String password = sc.next();
-//		try {
-//			CustomerService customerService = new CustomerServiceImpl();
-//			customerService.login(username, password);
 		customerMenu(sc);
-//		}catch(NoRecordFoundException | SomeThingWentWrongException ex) {
-//			System.out.println(ex.getMessage());
-//		}
 	}
 }

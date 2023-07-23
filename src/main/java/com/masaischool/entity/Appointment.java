@@ -35,12 +35,10 @@ public class Appointment {
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
-//    , referencedColumnName = "customerId"
     private Customer customer;
 
     @ManyToOne
     @JoinColumn(name = "provider_id")
-//    , referencedColumnName = "providerId"
     private ServiceProvider serviceProvider;
 
 	public Appointment() {
