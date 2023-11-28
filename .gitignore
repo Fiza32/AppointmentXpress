@@ -34,3 +34,8 @@ mvnw.cmd
 
 # Eclipse-specific
 .recommenders/
+
+
+# Sensitive Information
+.env
+
